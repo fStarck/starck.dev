@@ -1,28 +1,23 @@
-name: Deploy to Hostinger
+name: Deploy para Hostinger
 
 on:
   push:
     branches:
-      - main  # Substitua "main" pela branch que você está usando (se for outra)
+      - main  # Você pode ajustar para a branch desejada
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out o código do repositório
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout do código
+      uses: actions/checkout@v3
 
-      # 2. Instalar o cliente FTP
-      - name: Install FTP client
-        run: sudo apt-get install -y ftp
-
-      # 3. Realizar o upload via FTP
-      - name: Deploy to Hostinger via FTP
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          curl -T ./public_html/ -u $FTP_USERNAME:$FTP_PASSWORD ftp://$FTP_SERVER/
+    - name: Configuração FTP
+      uses: SamKirkland/FTP-Deploy-Action@5.1.0
+      with:
+        ftp-server: ${{ secrets.FTP_SERVER }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./  # Diretório local do código
+        server-dir: ${{ secrets.FTP_DIRECTORY }}
