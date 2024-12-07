@@ -1,23 +1,23 @@
-name: Deploy para Hostinger
+name: Deploy to Hostinger
 
 on:
   push:
     branches:
-      - main  # Você pode ajustar para a branch desejada
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # Você pode alterar para a versão mais recente, se preferir
 
     steps:
-    - name: Checkout do código
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Configuração FTP
-      uses: SamKirkland/FTP-Deploy-Action@5.1.0
-      with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./  # Diretório local do código
-        server-dir: ${{ secrets.FTP_DIRECTORY }}
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@5.0.0  # Atualizado para a versão 5.0.0
+        with:
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./  # Diretório local do código
+          server-dir: public_html  # Diretório no servidor FTP
