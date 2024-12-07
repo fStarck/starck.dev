@@ -17,7 +17,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: "77.37.127.102"        # Endereço do servidor FTP
-          username: "u920731321.starck.dev.br"  # Nome de usuário do FTP
-          password: "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"        # Senha do FTP
+          username: "u920731321.fstarck"  # Nome de usuário do FTP
+          password: "2yI^>/|$"        # Senha do FTP
           local-dir: "./"                  # Diretório local do código
           server-dir: "public_html/"       # Diretório no servidor FTP
