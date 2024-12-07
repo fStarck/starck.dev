@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }} # Nome de usuário do FTP
           password: ${{ secrets.FTP_PASSWORD }} # Senha do FTP
           local-dir: ./  # Diretório local do código
-          server-dir: public_html/  # Diretório no servidor FTP
+          server-dir: ./  # Diretório no servidor FTP
