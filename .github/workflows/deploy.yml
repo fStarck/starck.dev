@@ -1,0 +1,23 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}     # IP do servidor FTP (sem o "ftp://")
+          username: ${{ secrets.FTP_USERNAME }} # Nome de usuário do FTP
+          password: ${{ secrets.FTP_PASSWORD }} # Senha do FTP
+          local-dir: ./  # Diretório local do código
+          server-dir: ./  # Diretório no servidor FTP

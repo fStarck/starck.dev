@@ -1,0 +1,24 @@
+{
+  "name": "starck.dev",
+  "version": "1.0.0",
+  "description": "Este repositório contém o código-fonte do site Starck.dev, configurado para ser hospedado via GitHub Pages com deploy automatizado.",
+  "main": "index.js",
+  "scripts": {
+    "predeploy": "echo 'Preparando arquivos para deploy...'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fStarck/starck.dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fStarck/starck.dev/issues"
+  },
+  "homepage": "https://starck.dev.br",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
